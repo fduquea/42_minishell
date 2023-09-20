@@ -6,7 +6,7 @@
 #    By: fduque-a <fduque-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 17:49:20 by fduque-a          #+#    #+#              #
-#    Updated: 2023/09/14 16:56:01 by fduque-a         ###   ########.fr        #
+#    Updated: 2023/09/20 13:00:39 by fduque-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,28 +42,17 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 
 $(NAME) : ${OBJS}
 	ar rcs ${NAME} $(OBJS)
-	echo "$(GRAY)*----------------------------------*$(DEF_COLOR)"
-	echo "$(GRAY)| $(BLUE)! Compiled libft.a with sucess ! $(GRAY)|$(DEF_COLOR)"
-	echo "$(GRAY)*----------------------------------*$(DEF_COLOR)"
+
 
 all : ${NAME}
 
 clean :
 	$(RM) -rf $(OBJ_DIR)
-	echo "$(GRAY)*--------------------------------*$(DEF_COLOR)"
-	echo "$(GRAY)| $(RED)Removed X libft object files X $(GRAY)|$(DEF_COLOR)"
-	echo "$(GRAY)*--------------------------------*$(DEF_COLOR)"
 
 fclean : clean
 	${RM} ${NAME}
-	echo "$(GRAY)*-----------------------------------*$(DEF_COLOR)"
-	echo "$(GRAY)| $(RED)Removed X 'libft.a' X with sucess $(GRAY)|$(DEF_COLOR)"
-	echo "$(GRAY)*-----------------------------------*$(DEF_COLOR)"
 
 re : fclean all
-	echo "$(GRAY)*--------------------------------------------------*$(DEF_COLOR)"
-	echo "$(GRAY)| $(RED)X Cleaned X $(YELLOW)and $(GREEN)! Rebuilt ! $(YELLOW)everything for LIBFT $(GRAY)|$(DEF_COLOR)"
-	echo "$(GRAY)*--------------------------------------------------*$(DEF_COLOR)"
 
 
 .SILENT :
