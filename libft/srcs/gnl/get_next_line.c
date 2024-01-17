@@ -3,39 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:04:28 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/06/21 12:40:01 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:09:45 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strjoin_gnl(char *static_buffer, char *temp)
+// Joins two strings in dynamically allocated string and returns it
+// Frees the first string before returning
+
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*dest;
-	int		len;
-	int		i;
-	int		j;
 
-	i = -1;
-	j = -1;
-	if (!static_buffer)
-	{
-		static_buffer = malloc(sizeof(char) * 1);
-		static_buffer[0] = '\0';
-	}
-	len = ft_strlen(static_buffer) + ft_strlen(temp) + 1;
-	dest = malloc(sizeof(char) * len);
+	if (!s1)
+		s1 = ft_calloc(1, sizeof(char));
+	if (!s1 || !s2)
+		return (NULL);
+	dest = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
 		return (NULL);
-	while (static_buffer[++i])
-		dest[i] = static_buffer[i];
-	while (temp[++j])
-		dest[i + j] = temp[j];
-	dest[i + j] = '\0';
-	free(static_buffer);
+	ft_memcpy(dest, s1, ft_strlen(s1));
+	ft_memcpy(dest + ft_strlen(s1), s2, ft_strlen(s2));
+	free(s1);
 	return (dest);
 }
 
